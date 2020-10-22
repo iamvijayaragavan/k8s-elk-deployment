@@ -13,3 +13,9 @@ kubectl apply -f https://download.elastic.co/downloads/eck/1.2.1/all-in-one.yaml
 # Deploy Elasticsearch & Kibana application
 
 kubectl apply -f elk.yml
+
+# Getting Password of Elasticsearch
+
+Username: elastic
+
+PASSWORD=$(kubectl get secret elasticsearch-es-elastic-user -n elasticsearch -o go-template='{{.data.elastic | base64decode}}')
